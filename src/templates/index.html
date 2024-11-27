@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>荷物割り当てシステム</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
 </head>
 <body>
     <h1>荷物割り当てシステム</h1>
 
     <form id="assignmentForm">
         <div class="items-container">
+            <!-- 荷物入力欄 -->
             <div class="item-input">
                 <label for="jug">ジャグ:</label>
                 <input type="number" id="jug" value="0" min="0">
@@ -22,10 +26,6 @@
             <div class="item-input">
                 <label for="goal">ゴール:</label>
                 <input type="number" id="goal" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="basket">かご:</label>
-                <input type="number" id="basket" value="0" min="0">
             </div>
             <div class="item-input">
                 <label for="cooler">クーラー:</label>
@@ -71,8 +71,6 @@
                 <label for="foldingChair">折り畳みいす:</label>
                 <input type="number" id="foldingChair" value="0" min="0">
             </div>
-
-            <!-- 新しいアイテム -->
             <div class="item-input">
                 <label for="matchBall">試合球:</label>
                 <input type="number" id="matchBall" value="0" min="0">
@@ -131,31 +129,28 @@
             </div>
         </div>
 
-        <h2>けが人を選択:</h2>
-        <div id="injuredList">
-            <!-- メンバーのチェックボックスを動的に生成 -->
-        </div>
+        <h2>けが人を選択してください:</h2>
+        <div id="injuredList"></div>
 
         <div class="button-group">
             <button type="button" id="submitBtn">割り当て開始</button>
             <button type="button" id="resetBtn">リセット</button>
             <button type="button" id="undoBtn">1つ戻る</button>
         </div>
-
-       
+    </form>
 
     <h2>結果</h2>
     <pre id="result"></pre>
 
     <h2>累計ポイント調整</h2>
-    <div id="adjustPointsContainer" style="margin-top: 20px;">
+    <div id="adjustPointsContainer">
         <label for="adjustPointsMember">メンバーを選択:</label>
         <select id="adjustPointsMember">
             <option value="" disabled selected>選択してください</option>
             <script>
                 const members = ["山田", "高木", "高橋", "能見", "栗原", "岡本", "原", "中山", "鰺坂", "乙部",
-                    "森中", "宮本", "森本", "多賀", "江田", "榎本", "大河内", "山田康", "塩尻", "小花",
-                    "川中", "三浦", "髙木航", "石川", "市坂", "山中", "瀬戸", "田邊", "中川", "青木"];
+                                 "森中", "宮本", "森本", "多賀", "江田", "榎本", "大河内", "山田康", "塩尻", "小花",
+                                 "川中", "三浦", "髙木航", "石川", "市坂", "山中", "瀬戸", "田邊", "中川", "青木"];
                 const memberSelect = document.getElementById("adjustPointsMember");
                 members.forEach(member => {
                     const option = document.createElement("option");
@@ -165,13 +160,11 @@
                 });
             </script>
         </select>
-
-        <label for="adjustPointsValue" style="margin-left: 10px;">ポイント:</label>
-        <input type="number" id="adjustPointsValue" style="width: 80px;" placeholder="例: 5">
-
-        <button type="button" id="executeAdjustPointsBtn" style="margin-left: 10px;">実行</button>
+        <label for="adjustPointsValue">ポイント:</label>
+        <input type="number" id="adjustPointsValue" placeholder="例: 5">
+        <button type="button" id="executeAdjustPointsBtn">実行</button>
     </div>
 
-    <script src="/static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
