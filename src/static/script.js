@@ -29,7 +29,6 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
         ...Array(parseInt(document.getElementById("cage").value) || 0).fill("かご"),
         ...Array(parseInt(document.getElementById("board").value) || 0).fill("ボード袋"),
         ...Array(parseInt(document.getElementById("practicePad").value) || 0).fill("当たり練パッド"),
-        ...Array(parseInt(document.getElementById("boardBag").value) || 0).fill("ボード袋"),
         ...Array(parseInt(document.getElementById("stretchPole").value) || 0).fill("ストレッチポール"),
         ...Array(parseInt(document.getElementById("battery").value) || 0).fill("配信用バッテリー"),
         ...Array(parseInt(document.getElementById("tennisBall").value) || 0).fill("テニスボール"),
