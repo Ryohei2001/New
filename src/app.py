@@ -110,7 +110,7 @@ def assign():
 
         # 高木にジャグまたはクーラーが割り当てられた場合
         if destination == "external" and assigned_member == "高木" and item in ["ジャグ", "クーラー"]:
-            special_message = f"高木、重いけど頑張れ！！ ({item})"
+            special_message = f"高木、重いけど頑張れ！（笑） ({item})"
 
     return jsonify({
         "status": "success",
