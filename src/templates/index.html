@@ -141,6 +141,14 @@
 <h2>けが人を選択してください:</h2>
 <div id="injuredList"></div>
 
+<h2>移動先を選択してください:</h2>
+<select id="destination" required>
+  <option value="" disabled selected>移動先を選択</option>
+  <option value="ground_to_ground">グラウンド間移動</option>
+  <option value="external">対外移動</option>
+</select>
+
+
 <div class="button-group">
 <button type="button" id="submitBtn">割り当て開始</button>
 <button type="button" id="resetBtn">リセット</button>

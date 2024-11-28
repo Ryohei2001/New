@@ -55,6 +55,10 @@ def assign():
     data = request.json
     items_input = data.get('items', [])
     injured_members = data.get('injured_members', [])
+    destination = data.get('destination')  # 移動先を取得
+
+    if not destination:
+        return jsonify({"status": "error", "message": "移動先を選択してください"}), 400
 
     available_members = [member for member in members if member not in injured_members]
 
@@ -62,6 +66,9 @@ def assign():
         return jsonify({"status": "error", "message": "荷物の数が利用可能なメンバーを超えています"}), 400
 
     history_stack.append(burden_history.copy())
+
+    # ポイント倍率設定
+    point_multiplier = 1 if destination == "ground_to_ground" else 2
 
     assignment = {}
     used_members = set()
@@ -78,7 +85,8 @@ def assign():
             assignment[item] = []
         assignment[item].append(assigned_member)
 
-        burden_history[assigned_member] += item_weights.get(item, 0)
+        # 負担ポイントの更新
+        burden_history[assigned_member] += item_weights.get(item, 0) * point_multiplier
         used_members.add(assigned_member)
 
     return jsonify({"status": "success", "assignment": assignment, "burden": burden_history})

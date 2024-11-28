@@ -21,6 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // 割り当て処理
     document.getElementById("submitBtn").addEventListener("click", async () => {
+        const destination = document.getElementById("destination").value;
+        if (!destination) {
+            alert("移動先を選択してください！");
+            return;
+        }
+    
         const items = [
             ...Array(parseInt(document.getElementById("jug").value) || 0).fill("ジャグ"),
             ...Array(parseInt(document.getElementById("ball").value) || 0).fill("ボール"),
@@ -52,31 +58,29 @@ document.addEventListener("DOMContentLoaded", () => {
             ...Array(parseInt(document.getElementById("projector").value) || 0).fill("プロジェクター"),
             ...Array(parseInt(document.getElementById("crutch").value) || 0).fill("松葉杖")
         ];
+        const injured_members = Array.from(document.querySelectorAll("#injuredList input:checked")).map(checkbox => checkbox.value);
     
-    const injured_members = Array.from(document.querySelectorAll("#injuredList input:checked"))
-    .map(checkbox => checkbox.value);
+        const payload = { items, injured_members, destination };
     
-    const payload = { items, injured_members };
-    
-    try {
-    const response = await fetch("/assign", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+        try {
+            const response = await fetch("/assign", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+            const result = await response.json();
+            if (result.status === "success") {
+                document.getElementById("result").textContent = "割り当てが完了しました。\n";
+                displayAssignment(result.assignment);
+                displayBurden(result.burden);
+            } else {
+                document.getElementById("result").textContent = `エラー: ${result.message}`;
+            }
+        } catch (error) {
+            document.getElementById("result").textContent = `エラー: ${error.message}`;
+        }
     });
     
-    const result = await response.json();
-    if (result.status === "success") {
-    document.getElementById("result").textContent = "割り当てが完了しました。\n";
-    displayAssignment(result.assignment);
-    displayBurden(result.burden);
-    } else {
-    document.getElementById("result").textContent = `エラー: ${result.message}`;
-    }
-    } catch (error) {
-    document.getElementById("result").textContent = `エラー: ${error.message}`;
-    }
-    });
     
     // リセット処理
     document.getElementById("resetBtn").addEventListener("click", async () => {
