@@ -1,175 +1,179 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>荷物割り当てシステム</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>荷物割り当てシステム</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
 </head>
 <body>
-    <h1>荷物割り当てシステム</h1>
+<h1>荷物割り当てシステム</h1>
 
-    <form id="assignmentForm">
-        <div class="items-container">
-            <!-- 荷物入力欄 -->
+<form id="assignmentForm">
+<div class="items-container">
+<!-- 荷物入力欄 -->
+<div class="item-input">
+<label for="jug">ジャグ:</label>
+<input type="number" id="jug" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="ball">ボール:</label>
+<input type="number" id="ball" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="goal">ゴール:</label>
+<input type="number" id="goal" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="cooler">クーラー:</label>
+<input type="number" id="cooler" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="cage">かご:</label>
+<input type="number" id="cage" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="board">ボード袋:</label>
+<input type="number" id="board" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="practicePad">当たり練パッド:</label>
+<input type="number" id="practicePad" value="0" min="0">
+</div>
             <div class="item-input">
-                <label for="jug">ジャグ:</label>
-                <input type="number" id="jug" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="ball">ボール:</label>
-                <input type="number" id="ball" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="goal">ゴール:</label>
-                <input type="number" id="goal" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="cooler">クーラー:</label>
-                <input type="number" id="cooler" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="cage">かご:</label>
-                <input type="number" id="cage" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="board">ボード袋:</label>
-                <input type="number" id="board" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="practicePad">当たり練パッド:</label>
-                <input type="number" id="practicePad" value="0" min="0">
+                <label for="boardBag">ボード袋:</label>
+                <input type="number" id="boardBag" value="0" min="0">
             </div>
 
-            <div class="item-input">
-                <label for="stretchPole">ストレッチポール:</label>
-                <input type="number" id="stretchPole" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="battery">配信用バッテリー:</label>
-                <input type="number" id="battery" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="tennisBall">テニスボール:</label>
-                <input type="number" id="tennisBall" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="tripod">三脚:</label>
-                <input type="number" id="tripod" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="bcaa">BCAA:</label>
-                <input type="number" id="bcaa" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="measure">メジャー:</label>
-                <input type="number" id="measure" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="timeLadder">タイム用脚立:</label>
-                <input type="number" id="timeLadder" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="foldingChair">折り畳みいす:</label>
-                <input type="number" id="foldingChair" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="matchBall">試合球:</label>
-                <input type="number" id="matchBall" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="blueSheet">ブルーシート:</label>
-                <input type="number" id="blueSheet" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="hurdle">ハードル:</label>
-                <input type="number" id="hurdle" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="scale">体重計:</label>
-                <input type="number" id="scale" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="tube">チューブ:</label>
-                <input type="number" id="tube" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="stretcher">担架:</label>
-                <input type="number" id="stretcher" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="softBall">ソフトボール:</label>
-                <input type="number" id="softBall" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="scoreboard">スコアボード:</label>
-                <input type="number" id="scoreboard" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="camera">配信用カメラ:</label>
-                <input type="number" id="camera" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="largeTripod">大三脚:</label>
-                <input type="number" id="largeTripod" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="megaphone">メガホン:</label>
-                <input type="number" id="megaphone" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="goods">グッズ:</label>
-                <input type="number" id="goods" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="projector">プロジェクター:</label>
-                <input type="number" id="projector" value="0" min="0">
-            </div>
-            <div class="item-input">
-                <label for="crutch">松葉杖:</label>
-                <input type="number" id="crutch" value="0" min="0">
-            </div>
-        </div>
+<div class="item-input">
+<label for="stretchPole">ストレッチポール:</label>
+<input type="number" id="stretchPole" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="battery">配信用バッテリー:</label>
+<input type="number" id="battery" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="tennisBall">テニスボール:</label>
+<input type="number" id="tennisBall" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="tripod">三脚:</label>
+<input type="number" id="tripod" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="bcaa">BCAA:</label>
+<input type="number" id="bcaa" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="measure">メジャー:</label>
+<input type="number" id="measure" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="timeLadder">タイム用脚立:</label>
+<input type="number" id="timeLadder" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="foldingChair">折り畳みいす:</label>
+<input type="number" id="foldingChair" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="matchBall">試合球:</label>
+<input type="number" id="matchBall" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="blueSheet">ブルーシート:</label>
+<input type="number" id="blueSheet" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="hurdle">ハードル:</label>
+<input type="number" id="hurdle" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="scale">体重計:</label>
+<input type="number" id="scale" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="tube">チューブ:</label>
+<input type="number" id="tube" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="stretcher">担架:</label>
+<input type="number" id="stretcher" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="softBall">ソフトボール:</label>
+<input type="number" id="softBall" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="scoreboard">スコアボード:</label>
+<input type="number" id="scoreboard" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="camera">配信用カメラ:</label>
+<input type="number" id="camera" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="largeTripod">大三脚:</label>
+<input type="number" id="largeTripod" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="megaphone">メガホン:</label>
+<input type="number" id="megaphone" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="goods">グッズ:</label>
+<input type="number" id="goods" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="projector">プロジェクター:</label>
+<input type="number" id="projector" value="0" min="0">
+</div>
+<div class="item-input">
+<label for="crutch">松葉杖:</label>
+<input type="number" id="crutch" value="0" min="0">
+</div>
+</div>
 
-        <h2>けが人を選択してください:</h2>
-        <div id="injuredList"></div>
+<h2>けが人を選択してください:</h2>
+<div id="injuredList"></div>
 
-        <div class="button-group">
-            <button type="button" id="submitBtn">割り当て開始</button>
-            <button type="button" id="resetBtn">リセット</button>
-            <button type="button" id="undoBtn">1つ戻る</button>
-        </div>
-    </form>
+<div class="button-group">
+<button type="button" id="submitBtn">割り当て開始</button>
+<button type="button" id="resetBtn">リセット</button>
+<button type="button" id="undoBtn">1つ戻る</button>
+</div>
+</form>
 
-    <h2>結果</h2>
-    <pre id="result"></pre>
+<h2>結果</h2>
+<pre id="result"></pre>
 
-    <h2>累計ポイント調整</h2>
-    <div id="adjustPointsContainer">
-        <label for="adjustPointsMember">メンバーを選択:</label>
-        <select id="adjustPointsMember">
-            <option value="" disabled selected>選択してください</option>
-            <script>
-                const members = ["山田", "高木", "高橋", "能見", "栗原", "岡本", "原", "中山", "鰺坂", "乙部",
-                                 "森中", "宮本", "森本", "多賀", "江田", "榎本", "大河内", "山田康", "塩尻", "小花",
-                                 "川中", "三浦", "髙木航", "石川", "市坂", "山中", "瀬戸", "田邊", "中川", "青木"];
-                const memberSelect = document.getElementById("adjustPointsMember");
-                members.forEach(member => {
-                    const option = document.createElement("option");
-                    option.value = member;
-                    option.textContent = member;
-                    memberSelect.appendChild(option);
-                });
-            </script>
-        </select>
-        <label for="adjustPointsValue">ポイント:</label>
-        <input type="number" id="adjustPointsValue" placeholder="例: 5">
-        <button type="button" id="executeAdjustPointsBtn">実行</button>
-    </div>
+<h2>累計ポイント調整</h2>
+<div id="adjustPointsContainer">
+<label for="adjustPointsMember">メンバーを選択:</label>
+<select id="adjustPointsMember">
+<option value="" disabled selected>選択してください</option>
+<script>
+const members = ["山田", "高木", "高橋", "能見", "栗原", "岡本", "原", "中山", "鰺坂", "乙部",
+"森中", "宮本", "森本", "多賀", "江田", "榎本", "大河内", "山田康", "塩尻", "小花",
+"川中", "三浦", "髙木航", "石川", "市坂", "山中", "瀬戸", "田邊", "中川", "青木"];
+const memberSelect = document.getElementById("adjustPointsMember");
+members.forEach(member => {
+const option = document.createElement("option");
+option.value = member;
+option.textContent = member;
+memberSelect.appendChild(option);
+});
+</script>
+</select>
+<label for="adjustPointsValue">ポイント:</label>
+<input type="number" id="adjustPointsValue" placeholder="例: 5">
+<button type="button" id="executeAdjustPointsBtn">実行</button>
+</div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
