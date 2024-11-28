@@ -77,11 +77,12 @@ def assign():
 
     assignment = {}
     used_members = set()
+    special_message = None  # 特別なメッセージ
+
     for item in items_input:
         candidates = [m for m in available_members if m not in used_members]
 
-        # 対外移動時の制限を適用
-        if destination == "external":
+        if destination == "external":  # 対外移動の場合
             candidates = [
                 m for m in candidates
                 if not (m in restricted_members and item in restricted_items)
@@ -107,7 +108,16 @@ def assign():
         burden_history[assigned_member] += item_weights.get(item, 0) * point_multiplier
         used_members.add(assigned_member)
 
-    return jsonify({"status": "success", "assignment": assignment, "burden": burden_history})
+        # 高木にジャグまたはクーラーが割り当てられた場合
+        if destination == "external" and assigned_member == "高木" and item in ["ジャグ", "クーラー"]:
+            special_message = f"高木、重いけど頑張れ！！ ({item})"
+
+    return jsonify({
+        "status": "success",
+        "assignment": assignment,
+        "burden": burden_history,
+        "special_message": special_message  # 特別メッセージを送信
+    })
 
 @app.route('/reset', methods=['POST'])
 def reset():

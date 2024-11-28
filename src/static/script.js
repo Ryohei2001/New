@@ -73,6 +73,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("result").textContent = "割り当てが完了しました。\n";
                 displayAssignment(result.assignment);
                 displayBurden(result.burden);
+    
+                // 特別メッセージがある場合の表示
+                if (result.special_message) {
+                    displaySpecialMessage(result.special_message);
+                }
             } else {
                 document.getElementById("result").textContent = `エラー: ${result.message}`;
             }
@@ -80,8 +85,32 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("result").textContent = `エラー: ${error.message}`;
         }
     });
-    
-    
+
+    // 特別メッセージを表示する関数
+function displaySpecialMessage(message) {
+    const messageElement = document.createElement("div");
+    messageElement.textContent = message;
+    messageElement.style.position = "fixed";
+    messageElement.style.top = "50%";
+    messageElement.style.left = "50%";
+    messageElement.style.transform = "translate(-50%, -50%)";
+    messageElement.style.fontSize = "40px";
+    messageElement.style.fontWeight = "bold";
+    messageElement.style.color = "blue";
+    messageElement.style.backgroundColor = "yellow";
+    messageElement.style.padding = "20px";
+    messageElement.style.border = "5px solid red";
+    messageElement.style.textAlign = "center";
+    messageElement.style.zIndex = "1000";
+
+    document.body.appendChild(messageElement);
+
+    // メッセージを5秒後に消す
+    setTimeout(() => {
+        messageElement.remove();
+    }, 5000);
+}
+
     // リセット処理
     document.getElementById("resetBtn").addEventListener("click", async () => {
     try {
