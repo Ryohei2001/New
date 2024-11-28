@@ -26,6 +26,8 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
         ...Array(parseInt(document.getElementById("ball").value) || 0).fill("ボール"),
         ...Array(parseInt(document.getElementById("goal").value) || 0).fill("ゴール"),
         ...Array(parseInt(document.getElementById("cooler").value) || 0).fill("クーラー"),
+        ...Array(parseInt(document.getElementById("cage").value) || 0).fill("かご"),
+        ...Array(parseInt(document.getElementById("board").value) || 0).fill("ボード袋"),
         ...Array(parseInt(document.getElementById("practicePad").value) || 0).fill("当たり練パッド"),
         ...Array(parseInt(document.getElementById("boardBag").value) || 0).fill("ボード袋"),
         ...Array(parseInt(document.getElementById("stretchPole").value) || 0).fill("ストレッチポール"),
