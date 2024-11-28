@@ -7,7 +7,12 @@ app = Flask(__name__)
 # 部員リスト
 members = ["山田", "高木", "高橋", "能見", "栗原", "岡本", "原", "中山", "鰺坂", "乙部",
            "森中", "宮本", "森本", "多賀", "江田", "榎本", "大河内", "山田康", "塩尻", "小花",
-           "川中", "三浦", "髙木航", "石川", "市坂", "山中", "瀬戸", "田邊", "中川", "青木"]
+           "川中", "三浦", "髙木航", "石川", "市坂", "山中", "瀬戸", "田邊", "中川"]
+
+# 対外移動時の特定荷物とメンバーの割り当て制限
+restricted_members = ["高橋", "能見", "森中", "榎本", "塩尻", "三浦", "市坂", "中川"]
+restricted_items = ["ジャグ", "ゴール", "クーラー", "当たり練パッド"]
+
 
 # 荷物と負担ポイント
 item_weights = {
@@ -74,9 +79,22 @@ def assign():
     used_members = set()
     for item in items_input:
         candidates = [m for m in available_members if m not in used_members]
+
+        # 対外移動時の制限を適用
+        if destination == "external":
+            candidates = [
+                m for m in candidates
+                if not (m in restricted_members and item in restricted_items)
+            ]
+
         if not candidates:
             used_members.clear()
             candidates = available_members
+            if destination == "external":
+                candidates = [
+                    m for m in candidates
+                    if not (m in restricted_members and item in restricted_items)
+                ]
 
         sorted_members = sorted(candidates, key=lambda m: burden_history[m])
         assigned_member = sorted_members[0]
